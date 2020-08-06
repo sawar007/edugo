@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Blog Home
+                </h1>
+                <p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of
+                    the space telescope.</p>
+                <div class="link-nav">
+                    <span class="box">
+                        <a href="index.html">Home </a>
+                        <i class="lnr lnr-arrow-right"></i>
+                        <a href="blog-home.html">Blog</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="img/rocket.png" alt="">
+    </div>
+</section>
+
+{% if user.is_authenticated %}
+
+<div class="row" >
+    <div class="col-md-6 offset-md-3">
+        <div class="card-body p-5" " >
+                    
+                    
+
+            <form action="" method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
+                  
+                  <label for="First_Name">Title</label>
+                  <input required type="text" name="title" class="form-control"  placeholder="Enter Title">
+                
+                </div>
+              
+                <div class="form-group">
+                    <label for="ticket">Body</label><br>
+                    <textarea  name="body" rows="10" cols="79">
+                        
+                        </textarea>
+                  </div>
+                  <div class="form-group" >
+        
+                    <label for="Image"><strong>Upload Image</strong></label>
+                    <p class="file-upload">
+                        <input type="file" name="photo" accept="image/*" id="id_photo"></p>
+                  </div>
+               
+              
+                  <div class="form-group">
+                    
+                    <input type="hidden"  class="form-control" name="user_id" value="{{user.id}}" >
+                    <input type="hidden" name="user_name" value="{{user.username}}" >
+                    <input type="hidden" name="likes" value="0" >
+                  
+                    
+                  </div>
+        
+        
+                
+                <button type="submit" class="btn btn-dark btn-block ">Submit</button>
+        
+            </form>
+          </div>
+
+
+
+    </div>
+</div>
+
+  
+
+
+
+
+{% else %}
+<div class="jumbotron text-center bg-light " > <h2 class="text-secondary" >You must Login to Post </h2>
+    <br>
+<a href="{% url 'login' %}">
+    <button  class="btn btn-outline-secondary">Login Here</button>
+</a>
+
+</div>
+
+
+{% endif %}
+
+
+{% endblock %}

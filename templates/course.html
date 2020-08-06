@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="banner-area relative">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Courses
+                </h1>
+                <p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of
+                    the space telescope.</p>
+                <div class="link-nav">
+                    <span class="box">
+                        <a href="index.html">Home </a>
+                        <i class="lnr lnr-arrow-right"></i>
+                        <a href="courses.html">Courses</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rocket-img">
+        <img src="img/rocket.png" alt="">
+    </div>
+</section>
+
+<div >
+    <br>
+    <div class="row mb-5" >
+    {% for ele in item  %}
+    <div class='col-lg-4 col-sm-12 '>
+        <div class="card shadow p-3 mb-5 bg-white rounded">
+          
+          <div class="card-body">
+            
+            <h3 class="card-title">{{ele.name }}</h3>
+            <p class="card-text">{{ele.mess}}</p>
+         
+  
+  
+           <a href="{{ele.l}}" target="_blank"><button  class="btn btn-dark btn-block">GO</button></a> 
+  
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+</div>
+
+
+{% endblock %}
